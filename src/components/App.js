@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Item from './Item';
@@ -50,6 +51,7 @@ class App extends Component {
         <input type="text" placeholder="Repository Name" onChange={this.updateQuery} />
         <input type="submit" value="Search" onClick={this.fetchData} />
         {this.state.fetchedData ? this.state.results : undefined }
+        <Link to="/detail">Detail</Link>
       </div>
     );
   }
