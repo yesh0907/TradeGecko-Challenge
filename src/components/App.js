@@ -29,6 +29,11 @@ class App extends Component {
       });
   }
 
+  transitionToDetail() {
+    const { history } = this.props;
+    history.push('/detail', {});
+  }
+
   handleData(data) {
     const items = data.map((item, index) => {
       return (
@@ -37,6 +42,7 @@ class App extends Component {
           owner={item['owner']['login']}
           avatar={item['owner']['avatar_url']}
           key={index.toString()}
+          clickAction={this.transitionToDetail.bind(this)}
         />
       );
     });
