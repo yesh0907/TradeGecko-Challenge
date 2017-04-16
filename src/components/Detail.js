@@ -29,8 +29,12 @@ class Detail extends Component {
       const format = (data) => {
         return (
           <div>
-            <h1><a href={data['html_url']}>Repository: {data['name']}</a></h1>
-            <h2><a href={data['owner']['html_url']}>By: {data['owner']['login']}</a></h2>
+            <h1>
+              <a href={data['html_url']} target="_blank">Repository: {data['name']}</a>
+            </h1>
+            <h2>
+              <a href={data['owner']['html_url']} target="_blank">By: {data['owner']['login']}</a>
+            </h2>
             <h3>Language: {data['language']}</h3>
             <h3>Followers: {data['watchers_count']} | Stars: {data['stargazers_count']}</h3>
             <p>Description: {data['description']}</p>
