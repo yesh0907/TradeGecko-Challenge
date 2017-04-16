@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 import RepoItem from './RepoItem';
 
 class RepoList extends Component {
-  transitionToDetail() {
-    console.log("hi");
+  transitionToDetail(index) {
+    const { history, repos } = this.props;
+    this.props.transitionToDetail(index, history, repos);
   }
 
   render() {
@@ -17,7 +18,7 @@ class RepoList extends Component {
           owner={repo['owner']['login']}
           avatar={repo['owner']['avatar_url']}
           key={index.toString()}
-          clickAction={this.transitionToDetail.bind(this)}
+          clickAction={event => this.transitionToDetail(event.target.id)}
         />
       );
     })

@@ -9,21 +9,24 @@ import SearchButton from '../components/SearchButton';
 import RepoList from '../components/RepoList';
 
 class App extends Component {
-  transitionToDetail(event) {
-    const index = event.target.id;
-    const { history } = this.props;
-    const { data } = this.state;
-    const repo = encodeURIComponent(data[index]['full_name']);
-    history.push(`/detail/${repo}`, {});
-  }
-
   render() {
+    const {actions, search, history} = this.props;
+
+    const repoList = () => {
+      return (
+        <RepoList
+          repos={search.data}
+          history={history}
+          transitionToDetail={actions.transitionToDetail}
+        />
+      )
+    }
     return (
       <div>
         <h1>GitSearch!</h1>
-        <SearchBar onInputChange={this.props.actions.updateQuery} />
-        <SearchButton fetchData={this.props.actions.fetchData} query={this.props.search.query} />
-        {this.props.search.fetchedData ? <RepoList repos={this.props.search.data} /> : undefined }
+        <SearchBar onInputChange={actions.updateQuery} />
+        <SearchButton fetchData={actions.fetchData} query={search.query} />
+        { search.fetchedData ? repoList() : undefined }
       </div>
     );
   }
