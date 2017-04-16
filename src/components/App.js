@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Item from './Item';
@@ -10,6 +9,7 @@ class App extends Component {
     this.state = {
       query: '',
       results: [],
+      data: [],
       fetchedData: false
     };
     this.updateQuery = this.updateQuery.bind(this);
@@ -25,19 +25,25 @@ class App extends Component {
     const {query} = this.state;
     axios.get(`https://api.github.com/search/repositories?q=${query}`)
       .then((response) => {
-        this.handleData(response['data']['items']);
+        this.setState({data: response['data']['items']});
+        this.handleData();
       });
   }
 
-  transitionToDetail() {
+  transitionToDetail(event) {
+    const index = event.target.id;
     const { history } = this.props;
-    history.push('/detail', {});
+    const { data } = this.state;
+    const repo = encodeURIComponent(data[index]['full_name']);
+    history.push(`/detail/${repo}`, {});
   }
 
-  handleData(data) {
+  handleData() {
+    const { data } = this.state;
     const items = data.map((item, index) => {
       return (
         <Item
+          index={index.toString()}
           name={item['name']}
           owner={item['owner']['login']}
           avatar={item['owner']['avatar_url']}
@@ -57,7 +63,6 @@ class App extends Component {
         <input type="text" placeholder="Repository Name" onChange={this.updateQuery} />
         <input type="submit" value="Search" onClick={this.fetchData} />
         {this.state.fetchedData ? this.state.results : undefined }
-        <Link to="/detail">Detail</Link>
       </div>
     );
   }

@@ -15,7 +15,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path="/" component={App} />
-        <Route path="/detail" component={Detail} />
+        <Route path="/detail/:repo" component={Detail} />
       </div>
     </Router>
   </Provider>,
