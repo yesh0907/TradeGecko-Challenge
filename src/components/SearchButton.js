@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Icon } from 'react-materialize';
 
 class SearchButton extends Component {
   fetchData() {
@@ -7,11 +8,11 @@ class SearchButton extends Component {
 
   render() {
     return (
-      <input
-        type="submit"
-        value="Search"
-        onClick={this.fetchData.bind(this)}
-      />
+        <Button
+          waves='light'
+          onClick={this.fetchData.bind(this)}>
+          <Icon left>search</Icon>Search
+        </Button>
     );
   }
 }

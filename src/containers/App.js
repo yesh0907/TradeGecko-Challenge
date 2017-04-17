@@ -4,28 +4,34 @@ import { bindActionCreators } from 'redux';
 
 import * as Actions from '../actions';
 
+import { Row, Col } from 'react-materialize';
+
 import SearchBar from '../components/SearchBar';
 import SearchButton from '../components/SearchButton';
 import RepoList from '../components/RepoList';
 
 class App extends Component {
   render() {
-    const {actions, search, history} = this.props;
+    const {actions, search} = this.props;
 
     const repoList = () => {
       return (
         <RepoList
           repos={search.data}
-          history={history}
-          transitionToDetail={actions.transitionToDetail}
+          clicked={search.cardClicked}
+          revealCard={actions.revealCard}
         />
       )
     }
     return (
-      <div>
-        <h1>GitSearch!</h1>
-        <SearchBar onInputChange={actions.updateQuery} />
-        <SearchButton fetchData={actions.fetchData} query={search.query} />
+      <div className="container">
+        <h1 className="header">GitSearch</h1>
+        <Row>
+          <Col s={12}>
+            <SearchBar onInputChange={actions.updateQuery} />
+            <SearchButton fetchData={actions.fetchData} query={search.query} />
+          </Col>
+        </Row>
         { search.fetchedData ? repoList() : undefined }
       </div>
     );
