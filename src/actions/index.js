@@ -4,7 +4,7 @@ export const UPDATE_QUERY = 'UPDATE_QUERY';
 export const FETCH_ERROR = 'FETCH_ERROR';
 export const FETCH_SUCCESSFUL = 'FETCH_SUCCESSFUL';
 
-export const TRANSITION = 'TRANSITION_SUCCESSFUL';
+export const TRANSITION = 'TRANSITION';
 
 export function updateQuery(query = null) {
   return {
