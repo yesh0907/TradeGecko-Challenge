@@ -20,3 +20,15 @@ body {
 p.lead.activator {
   cursor: pointer;
 }
+
+.alert-icon {
+  font-size: 2rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  .searchButton {
+    width: 95%;
+    margin-left: 10px;
+    padding-left: 20px;
+  }
+}

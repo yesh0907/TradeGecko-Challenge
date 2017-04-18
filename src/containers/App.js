@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import * as Actions from '../actions';
 
-import { Row, Col } from 'react-materialize';
-
+import { Row, Col, Preloader } from 'react-materialize';
 import SearchBar from '../components/SearchBar';
 import SearchButton from '../components/SearchButton';
 import RepoList from '../components/RepoList';
+import ErrorPopup from '../components/ErrorPopup';
 
 class App extends Component {
   render() {
@@ -26,12 +26,18 @@ class App extends Component {
     return (
       <div className="container">
         <h1 className="header">GitSearch</h1>
+        <ErrorPopup
+          hasError={search.hasError}
+          errorMessage={search.errorMessage}
+          updateState={actions.errorDisplayed}
+        />
         <Row>
           <Col s={12}>
-            <SearchBar onInputChange={actions.updateQuery} />
+            <SearchBar onInputChange={actions.updateQuery} query={search.query} />
             <SearchButton fetchData={actions.fetchData} query={search.query} />
           </Col>
         </Row>
+        { search.fetchingData ? <Preloader size='big'/> : undefined }
         { search.fetchedData ? repoList() : undefined }
       </div>
     );

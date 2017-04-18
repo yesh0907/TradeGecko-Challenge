@@ -10,6 +10,7 @@ class SearchButton extends Component {
     return (
         <Button
           waves='light'
+          className="searchButton"
           onClick={this.fetchData.bind(this)}>
           <Icon left>search</Icon>Search
         </Button>

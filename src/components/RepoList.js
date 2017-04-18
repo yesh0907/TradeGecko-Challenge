@@ -19,9 +19,16 @@ class RepoList extends Component {
       );
     })
 
-    return (
-      <Row>{repoItems}</Row>
-    );
+    if (repos.length > 0) {
+      return (
+        <Row>{repoItems}</Row>
+      );
+    }
+    else {
+      return (
+        <Row>No Results Found.</Row>
+      );
+    }
   }
 }
 

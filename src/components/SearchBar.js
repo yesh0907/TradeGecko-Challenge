@@ -10,6 +10,7 @@ class SearchBar extends Component {
     return (
         <Input
           label="Repository Name"
+          value={this.props.query}
           onChange={this.onInputChange.bind(this)}
           s={12}
           m={9}
