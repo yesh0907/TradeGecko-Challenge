@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import AlertContainer from 'react-alert';
 
 class ErrorPopup extends Component {
+  /*
+    Constructor: to setup the styling of the component
+   */
   constructor(props) {
     super(props);
     this.alertOptions = {
@@ -13,6 +16,9 @@ class ErrorPopup extends Component {
     };
   }
 
+  /*
+    Show the alert and update the state.
+  */
   showAlert() {
     const { errorMessage, updateState } = this.props;
     this.msg.show(errorMessage, {
@@ -24,9 +30,13 @@ class ErrorPopup extends Component {
     updateState();
   }
 
+
   render() {
     const { hasError } = this.props;
 
+    /*
+      Show if only have error
+    */
     if (hasError) {
       this.showAlert();
     }

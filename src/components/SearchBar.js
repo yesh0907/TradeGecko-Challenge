@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Input } from 'react-materialize';
 
 class SearchBar extends Component {
+  /*
+    Update the State's Query with the current value
+  */
   onInputChange(event) {
     this.props.onInputChange(event.target.value);
   }
