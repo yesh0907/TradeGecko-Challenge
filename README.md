@@ -1,4 +1,4 @@
-TradeGecko Challenge by Yesh Chandiramani
+# TradeGecko Challenge by Yesh Chandiramani
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
