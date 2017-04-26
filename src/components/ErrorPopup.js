@@ -24,7 +24,7 @@ class ErrorPopup extends Component {
     this.msg.show(errorMessage, {
       time: 5000,
       type: 'error',
-      icon: <i className="fa fa-exclamation-triangle alert-icon medium" aria-hidden="true"></i>
+      icon: <i className="fa fa-exclamation-triangle medium" id="alert-icon" aria-hidden="true"></i>
     });
 
     updateState();
